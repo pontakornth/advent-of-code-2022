@@ -3,6 +3,7 @@ lines = file.read.split("\n")
 result = 0
 lost = ['A Z', 'B X', 'C Y']
 win = ['A Y', 'B Z', 'C X']
+shape_point = { 'X': 1, 'Y': 2, 'Z': 3 }
 lines.each do |line|
   if lost.include?(line)
     nil
@@ -13,14 +14,7 @@ lines.each do |line|
   end
   # @type [String]
   shape = line[-1]
-  result += case shape
-            when 'X'
-              1
-            when 'Y'
-              2
-            else
-              3
-            end
+  result += shape_point[shape.to_sym]
 end
 puts result
 
